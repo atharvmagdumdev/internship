@@ -1,0 +1,237 @@
+ body {
+        background-color: black;
+        margin: 0;
+        
+    }
+    * {
+        box-sizing: border-box;
+        font-family: 'Raster Forge';
+        font-size: 14px;
+        color: white;
+        z-index: 999;
+    }
+    .Navbarstrip {
+        display: flex;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.666);
+        padding: 10px 20px;
+        flex-wrap: wrap;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 10%;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .hamburger {
+        font-size: 2rem;
+        display: none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .hamburger img {
+        height: 25px;
+        width: 25px;
+    }
+
+    .titleName {
+        font-size: 2rem;
+    }
+
+    .Menu ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding: 0;
+        padding-left: 100px;
+        margin: 0;
+    }
+
+    .Menu li {
+        font-size: 1.5rem;
+        border: 2px solid rgba(0, 0, 0, 0.477);
+        padding: 5px 10px;
+    }
+    .center {
+        display: flex;
+        gap: 20px;  
+        padding-left: 250px;
+        margin: 0;
+        margin-top: 2px;
+        font-size: 1.5rem;
+    }
+    .center input
+    {
+        width: 500px;
+        height: 40px;
+        border: none;
+        border-radius: 15px;
+    }
+    .heading
+    {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .right-side {
+        margin-left: auto;
+    }
+
+    .right-side button {
+        background-color: rgb(53, 195, 62);
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    .imgBanner {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+    img {
+        width: 100%;
+        height: auto;
+        height: 100vh;
+        object-fit: cover;
+        object-position: center top;
+        z-index: -1;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(30, 46, 54, 0.766);
+        opacity: 0.4;
+        z-index: 1;
+    }
+
+    .overimgtxt {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    .overimgtxt h1 {
+        font-size: 4rem;
+    }
+    .overimgtxt h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    
+    .overimgtxt h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .overimgtxt button {
+        background-color: rgb(53, 195, 62);
+        padding: 10px 20px;
+        font-size: 1.5rem;
+        border: none;
+        color: white;
+    }
+    .cards
+    {
+        position: absolute;
+        margin-top: 50px;
+        top: 450px;
+        bottom: 750px;
+        display: flex;
+    }
+    .cards .inventory1
+    {
+        margin-left: 60px;
+        background-color: rgba(0, 0, 0, 0.834);
+        height: 500px;
+        width: 650px;
+    }
+    .cards .inventory2
+    {
+        margin-left: 60px;
+        background-color: rgba(0, 0, 0, 0.834);
+        height: 500px;
+        width: 650px;
+    }
+    .inventory1,.inventory2 p
+    {
+        text-align: center;
+        color: aliceblue;
+        font-size: 1rem;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+        .Menu {
+            display: none;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        .right-side {
+            margin-left: 0;
+        }
+
+        .titleName {
+            font-size: 1.5rem;
+        }
+        .banner {
+            height: 90vh;
+        }
+
+        .banner img {
+            object-position: center center;
+        }
+        .overimgtxt h2 {
+            font-size: 2rem;
+        }
+
+        .overimgtxt button {
+            font-size: 1rem;
+        }
+        .inventory1
+        {
+            display: flex;
+            flex-direction: column;
+        }
+        .Items
+        {
+            width: 160px;
+            height: 151px;
+            display: grid;
+            grid-column: auto;
+            gap: 2px 2px;
+        }
+        .item
+        {
+            display: flex;
+            flex-direction: column;
+            width: 160px;
+            height: 151px;
+            padding: 2px;
+        }
+        .item img{
+            width: 160px;
+            height: 150px;
+        }
+    }

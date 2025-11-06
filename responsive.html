@@ -1,0 +1,164 @@
+<html>
+    <head>
+        <title>Res</title>
+        <style>
+                @media(max-width:768px)
+                {
+                    .Menu {
+                        display: none; /* hide full menu */
+                    }
+
+                    .hamburger {
+                        display: block; /* show hamburger only on small screens */
+                        position: absolute;
+                        margin: 1px;
+                        top: 1px;
+                    }
+                    .right-side
+                    {
+                        right: 100px;
+                    }
+                }
+                body
+                    {
+                        background-color: black; 
+                     }
+                *
+                {
+                    margin: 0px;
+                    font-family: 'Raster Forge';
+                    font-size: 14px;
+                    color: white;
+                }
+                
+                .Navbarstrip
+                {
+                    display: flex;
+                    background-color: rgba(0, 0, 0, 0.151);
+                }
+                .hamburger {
+                    font-size: 2.5rem;
+                    display: none; /* hidden on desktop */
+                    padding: 15px;
+                    height: 20px;
+                    width: 20px;
+                    cursor: pointer;
+                }
+                .titleName
+                {
+                    
+                    padding: 15px;
+                    font-size: 2.5rem;
+                }
+                .Menu
+                {
+                    margin: 2px;
+                    padding: 5px;
+                    padding-top: 2px;
+                    padding-left: 160px;
+                }
+                ul
+                {
+                    list-style: none;
+                    display: flex;
+                }
+                a
+                {
+                    text-decoration: none;
+                }
+                li
+                {
+                    margin-top: 10px ;
+                    text-decoration: none;
+                    margin-left: 5px;
+                    margin-right: 15px;
+                    font-size: 2rem;
+                    border: 2px rgba(0, 0, 0, 0.477) solid;
+                    padding: 5px;
+                }
+                .right-side
+                {
+                    padding-top: 10px;
+                    padding-left: 300px;
+                }
+                button
+                {
+                    background-color:  rgb(53, 195, 62);
+                    border: 2px;
+                    padding: 8px;
+                    font-size: 2rem;
+                }
+                .imgbanner
+                {
+                    position: relative;
+                }
+                img
+                {
+                    width: 100%; 
+                    height: 720px;
+                    z-index: -1;
+                    opacity: 0.6;
+                }
+                .overimgtxt
+                {
+                    z-index: 1;
+                    position: absolute;
+                    top: 10%;
+                    text-align: center;
+                     padding-left: 25%;
+                }
+                .overimgtxt h2{
+                   
+                    font-size: 4rem;
+                    text-align: center;
+                }
+                .overimgtxt button
+                {
+                    margin-top: 20px;
+                    font-size: 2rem;
+                    text-align: center;
+                }
+                .cards
+                {
+                    z-index: 1;
+                    position: absolute; 
+                    background-color: rgba(240, 255, 255, 0.429);
+                }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div class="Navbarstrip">
+            <div class="logo">
+                <div class="hamburger"><img src="menu.png"></div>
+                <p class="titleName">BlockKart</p>
+            </div> 
+            <div class="Menu">
+                <ul>
+                    <a href="#Menu1"><li>Menu1</li></a>
+                   <a href="#Menu2"> <li>Menu2</li></a>
+                    <a href="#Menu3"><li>Menu3</li></a>
+                    <a href="#Menu4"><li>Menu4</li></a>
+                </ul>
+            </div>
+            <div class="right-side">
+                <button>Login</button>
+            </div>
+        </div>
+        <div class="imgBanner">
+                <img src="1183450.jpg">
+                <div class="overimgtxt">
+                    <h2 >Welcome To The World <br>of Blocks!!</h2>
+                    <button>Login</button>
+                </div>
+        <!-- <div class="cards">
+            <div class="items">
+                <p>Items list</p>
+            </div>
+            <div class="items">
+                <p>Items list</p>
+            </div>
+        </div> -->
+    </div>
+    </body>
+</html>

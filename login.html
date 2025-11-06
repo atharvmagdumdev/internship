@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+</head>
+<body>
+    <div class="Content">
+        <div class="overlay"></div>
+            <div class="imgbanner"></div>
+        <div class="Navbarstrip">
+            <div class="logo">
+                <div class="hamburger"><img src="menu.png" alt="menu"></div>
+                <p class="titleName">BlockKart</p>
+            </div>
+            <div class="Menu">
+                <ul>
+                    <a href="#Menu1"><li>Menu1</li></a>
+                    <a href="#Menu2"><li>Menu2</li></a>
+                    <a href="#Menu3"><li>Menu3</li></a>
+                    <a href="#Menu4"><li>Menu4</li></a>
+                </ul>
+            </div>
+            <div class="right-side">
+                <button>Login</button>
+            </div>
+        </div>
+        <div class="form">
+            <form class="dataform" id="myForm">
+                <label class="login">Login</label>
+                <input type="text" placeholder="Username" class="textb" id="Username" required>
+                <input type="password" placeholder="Password" class="textb" id="Password" required>
+
+                <div class="cbox-label">
+                    <input class="cbox" type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+
+                <input type="button" id="submit" value="Login" onclick="Login()">
+
+                <div class="notuser">
+                    Don't have an account?
+                    <a href="#register">Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
