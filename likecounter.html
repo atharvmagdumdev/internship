@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Space Clicker</title>
+    <style>
+        .main{
+            margin-left: 400px;
+        }
+        h1{
+            margin-left: 250px;
+            font-size: 42px;
+        }
+        *{
+            font-size: 28px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .stats{
+            width: 600px;
+            margin: 5px;
+            padding-left: 250px;
+            display: inline-flex;
+        }
+        #likebtn{
+            background-color: transparent;
+            border: none;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .stats img{
+            height: 100px;
+            padding-bottom: 20px;
+        }
+        #likecount{
+            margin-top: 45px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Like Counter</h1>
+    <div class="post_img">
+    <img id="post" src="Hintergründe für euch☺️.jpeg">
+    </div>
+
+    <div class="stats">
+    <button id="likebtn" ><img src="images (1).png"></button>
+    <span id="likecount"> 0</span>
+    </div>
+    </div>
+
+<script>
+    let count = 0; 
+
+    document.getElementById("likebtn").addEventListener("click", function() {
+        count++;
+        document.getElementById("likecount").innerText = count;
+    });
+    </script>
+</body> 
+</html>

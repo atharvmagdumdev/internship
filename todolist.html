@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            To-do List
+        </title>
+        <style>
+            body
+            {
+                background-color: rgb(39, 39, 39);
+                margin-left: 500px;;
+            }
+            *{
+                color: rgb(127, 232, 255);
+                align-content: center;
+                align-items: center;
+                font-size: 28px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            h1{
+                /* margin-left: 400px; */
+                font-size: 42px;
+            }
+            input{
+                color: black;
+            }    
+            button{
+                color: rgb(0, 0, 0);
+                background-color: rgb(127, 232, 255);
+                border: none;
+                margin: 2px;
+                margin-left: 5px;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>My To-Do List</h1>
+  <div id="todo-container">
+    <input type="text" id="todo-input" placeholder="Enter a new task..." />
+    <button onclick="addTodo()">Add</button>
+    <ul id="todo-list"></ul>
+  </div>
+
+  <script>
+    function addTodo() {
+      const input = document.getElementById("todo-input");
+      const value = input.value.trim();
+
+      if (value === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        <span onclick="toggleDone(this)">${value}</span>
+        <button class="delete-btn" onclick="deleteTodo(this)">X</button>
+      `;
+
+      document.getElementById("todo-list").appendChild(li);
+      input.value = ""; // clear input
+    }
+
+    function deleteTodo(button) {
+      button.parentElement.remove();
+    }
+
+    function toggleDone(span) {
+      span.parentElement.classList.toggle("done");
+    }
+  </script>
+    </body>
+</html>

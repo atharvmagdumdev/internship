@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced To-do List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f7ff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /*Card */
+        #todo-container {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.1); /* Subtle shadow from new primary */
+            width: 100%;
+            max-width: 550px;
+            margin: 1rem;
+            border: 1px solid #eef1f0;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #4a43c5;
+            font-weight: 600;
+        }
+
+        .input-group {
+            display: flex;
+            margin-bottom: 2rem;
+            gap: 10px;
+        }
+
+        #todo-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            font-size: 1.05rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fdfdfd;
+            color: #333;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        #todo-input:focus {
+            border-color: #6c63ff; 
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.25);
+        }
+
+        #todo-input::placeholder {
+            color: #999;
+        }
+
+        .input-group button {
+            background-color: #6c63ff; 
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .input-group button:hover {
+            background-color: #5a54d1; 
+            transform: translateY(-1px);
+        }
+
+        .input-group button:active {
+            transform: translateY(0);
+        }
+        #todo-list {
+            list-style-type: none;
+        }
+
+        #todo-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0.25rem;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+            color: #444;
+            gap: 10px;
+        }
+
+        #todo-list li:last-child {
+            border-bottom: none;
+        }
+        
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            outline: none;
+            background-color: #f9f9f9;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: #5a54d1; 
+            border-color: #5a54d1;
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '✓';
+            color: #fff;
+            font-size: 16px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .task-text {
+            flex: 1;
+            padding-right: 1rem;
+            word-break: break-word;
+            transition: color 0.3s ease;
+        }
+        
+  
+        #todo-list li.done .task-text {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+
+        .task-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .task-actions button {
+            border: none;
+            padding: 0.6rem 1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .edit-btn {
+            background-color: #0dcaf0; 
+            color: #000;
+        }
+
+        .edit-btn:hover {
+            background-color: #0b9ab8;
+            transform: translateY(-1px);
+        }
+        
+        .edit-btn:disabled {
+            background-color: #ced4da; 
+            color: #6c757d; 
+            cursor: not-allowed;
+            transform: none;
+            opacity: 0.7;
+        }
+
+        .delete-btn {
+            background-color: #dc3545; 
+            color: #ffffff;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+            transform: translateY(-1px);
+        }
+
+        .task-actions button:active {
+            transform: translateY(0);
+        }
+
+        li.editing .task-text {
+            display: none;
+        }
+
+        li .edit-input {
+            display: none;
+            flex: 1;
+            padding: 0.5rem;
+            font-size: 1.05rem;
+            border: 1px solid #6c63ff;
+            border-radius: 6px;
+            margin-right: 10px;
+        }
+
+        li.editing .edit-input {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="todo-container">
+        <h1>My To-Do List</h1>
+        <div class="input-group">
+            <input type="text" id="todo-input" placeholder="Add a new task..." />
+            <button onclick="addTodo()">Add Task</button>
+        </div>
+        <ul id="todo-list"></ul>
+    </div>
+
+    <script>
+        function addTodo() {
+            const input = document.getElementById("todo-input");
+            const value = input.value.trim();
+
+            if (value === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            const li = document.createElement("li");
+            li.setAttribute('data-id', Date.now());
+
+            li.innerHTML = `
+                <input type="checkbox" onchange="toggleDone(this)">
+                <span class="task-text">${value}</span>
+                <input type="text" class="edit-input" value="${value}" style="display:none;">
+                <div class="task-actions">
+                    <button class="edit-btn" onclick="editTodo(this)">Edit</button>
+                    <button class="delete-btn" onclick="deleteTodo(this)">Delete</button>
+                </div>
+            `;
+            
+            document.getElementById("todo-list").prepend(li);
+            input.value = "";
+        }
+
+        function deleteTodo(button) {
+            if (confirm("Are you sure you want to delete this task?")) {
+                button.closest('li').remove();
+            }
+        }
+
+        function toggleDone(checkbox) {
+            const listItem = checkbox.closest('li');
+            const list = document.getElementById("todo-list");
+            const editButton = listItem.querySelector('.edit-btn');
+            
+            if (listItem.classList.contains('editing')) {
+                const taskTextSpan = listItem.querySelector('.task-text');
+                const editInput = listItem.querySelector('.edit-input');
+                
+                taskTextSpan.style.display = 'block';
+                editInput.style.display = 'none';
+                editButton.textContent = 'Edit';
+                listItem.classList.remove('editing');
+            }
+
+            if (checkbox.checked) {
+                listItem.classList.add("done");
+                editButton.disabled = true; 
+                list.appendChild(listItem); 
+            } else {
+                listItem.classList.remove("done");
+                editButton.disabled = false;
+                list.prepend(listItem);
+            }
+        }
+
+        function editTodo(button) {
+            const listItem = button.closest('li');
+            const taskTextSpan = listItem.querySelector('.task-text');
+            const editInput = listItem.querySelector('.edit-input');
+
+            
+            if (listItem.classList.contains('editing')) {
+                taskTextSpan.textContent = editInput.value;
+                editInput.value = editInput.value;
+                button.textContent = 'Edit';
+                listItem.classList.remove('editing');
+                editInput.style.display = 'none';
+                taskTextSpan.style.display = 'block';
+            } else {
+                editInput.value = taskTextSpan.textContent; 
+                button.textContent = 'Save';
+                listItem.classList.add('editing');
+                taskTextSpan.style.display = 'none';
+                editInput.style.display = 'block';
+                editInput.focus();
+            }
+        }
+    </script>
+</body>
+</html>
